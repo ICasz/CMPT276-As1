@@ -3,6 +3,7 @@ var table = document.querySelector('table');
 function makeRow() {
     var row = table.insertRow(table.rows.length);
     var cell = [row.insertCell(0), row.insertCell(1), row.insertCell(2), row.insertCell(3), row.insertCell(4)]
+
     cell[0].innerHTML= `Activity ` + (table.rows.length - 1);
     cell[1].innerHTML= `A` + (table.rows.length - 1);
     cell[2].innerHTML= `<input type="text" id = "weight` + (table.rows.length - 1) + `">`;
@@ -12,7 +13,7 @@ function makeRow() {
     cell[4].innerHTML = "";
 }
 
-//Creates Activity 1-4
+//Creates rows for Activity 1-4
 function makeTable() {
   for(var i = 1; i < 5; i++){
     makeRow();
@@ -27,9 +28,7 @@ document.getElementById('addActivity').onclick = function() {
 
 //Update percent for each activity
 table.addEventListener('input', () => {
-  document.getElementById('results').style.color = "blue";
-  for( var i = 1; i < table.rows.length; i++) {
-
+  for (var i = 1; i < table.rows.length; i++) {
     var numerator = document.getElementById('grade' + i + 1).value;
     var denominator =  document.getElementById('grade' + i + 2).value;
 
@@ -37,7 +36,6 @@ table.addEventListener('input', () => {
         percentage =  numerator / denominator * 100;
         table.rows[i].cells[4].innerHTML = percentage.toFixed(2) + "%";
       }
-
       else {
         table.rows[i].cells[4].innerHTML = "";
       }
@@ -46,12 +44,10 @@ table.addEventListener('input', () => {
 
 //Calculate the mean for all valid grade inputs
 document.getElementById('mean').onclick = function() {
-  document.getElementById('results').style.color = "#D80000";
   var total = 0;
   var numActivitiesIncluded = 0;
-  var meanGrade = 0;
 
-  for(var i = 1; i < table.rows.length; i++) {
+  for (var i = 1; i < table.rows.length; i++) {
     if(parseFloat(table.rows[i].cells[4].innerHTML) >= 0) {
       total += parseFloat(table.rows[i].cells[4].innerHTML);
       numActivitiesIncluded++;
@@ -60,15 +56,16 @@ document.getElementById('mean').onclick = function() {
       window.alert("Activity " + i + " has invalid input so it has been omitted in the mean.");
     }
   }
-  if(total >= 0 && numActivitiesIncluded > 0) {
+  if (total >= 0 && numActivitiesIncluded > 0) {
     meanGrade = (total / numActivitiesIncluded).toFixed(2);
     document.getElementById('results').innerHTML = 'Mean grade is ' + meanGrade + `%`;
   }
   else {
-    document.getElementById('results').innerHTML = '';
+    document.getElementById('results').innerHTML = "";
   }
 };
 
+//Calculate the weighted grade for the valid grade inputs
 document.getElementById('weighted').onclick = function() {
   var total = 0;
   var sumOfWeights = 0;
@@ -82,10 +79,11 @@ document.getElementById('weighted').onclick = function() {
       window.alert("Activity " + i + " has invalid input so it has been omitted in the weighted grade.");
     }
   }
-  console.log('SumofWeights: ' + sumOfWeights);
-  console.log("Total: " + total);
   if(total >= 0 && sumOfWeights > 0) {
     var weightedGrade = (total / sumOfWeights).toFixed(2);
     document.getElementById('results').innerHTML = `Weighted grade is ` + weightedGrade + `%`;6666
+  }
+  else {
+    document.getElementById('results').innerHTML = "";
   }
 };
