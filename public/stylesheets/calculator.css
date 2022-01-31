@@ -1,0 +1,87 @@
+*{
+  font-family: Arial;
+  font-weight: bold;
+}
+
+h1 {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+h2 {
+  padding-top: 25px;
+  color: #D80000;
+}
+
+body {
+  z-index: 0;
+  background: white;
+  border-top: 20px solid #48430a;
+  margin-top: 0px;
+  border-bottom: 30px solid #48430a;
+}
+
+.grayBox {
+  z-index: 1;
+  background-color: #E8E8E8;
+  width: 70%;
+  margin-left: 20px;
+  padding-left: 13px;
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+
+}
+
+table, th, td {
+  font-weight: normal;
+  margin-bottom: 20px;
+  table-layout: fixed;
+  width:96%;
+  border: 1px solid #C0C0C0;;
+  border-collapse: collapse;
+  padding-left: 4px;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #D3D3D3;
+}
+
+ input {
+  width: 45px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+[type = "button"]{
+  color: white;
+  background-color: #B22222;
+  width: fit-content;
+  border-radius: 10%;
+  border: none;
+}
+
+h3 {
+  color: #D80000;
+}
+
+#weighted {
+  float: right;
+  margin-right: 1px;
+}
+
+#mean {
+  padding-left: 20px;
+  padding-right: 20px;
+  float: right;
+  margin-left: 1px;
+  margin-right: 13px;
+}
+
+#results {
+  color: #D80000;
+  float: left;
+}
